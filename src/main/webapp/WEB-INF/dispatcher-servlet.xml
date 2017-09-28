@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- ==================== -->
+    <!--       扫描Bean        -->
+    <!-- ==================== -->
+    <context:component-scan base-package="com.company.project.wechatweb.web" use-default-filters="true">
+    </context:component-scan>
+    <!-- ==================== -->
+    <!--      映射处理器       -->
+    <!-- ==================== -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    </bean>
+    <!-- ==================== -->
+    <!--      处理器适配器     -->
+    <!-- ==================== -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <bean name="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+    <bean name="xmlMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+    <!-- ==================== -->
+    <!--      视图解析器       -->
+    <!-- ==================== -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- ==================== -->
+    <!--       静态资源        -->
+    <!-- ==================== -->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+    <!-- ==================== -->
+    <!--     异常解析器    -->
+    <!-- ==================== -->
+</beans>

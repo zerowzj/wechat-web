@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.company.cn/menu"
+           elementFormDefault="qualified">
+    <xs:element name="menu">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="button" minOccurs="1" maxOccurs="3">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="key" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="url" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="sub_btn" minOccurs="0" maxOccurs="5">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="key" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="url" type="xs:string" minOccurs="0"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                    <xs:attribute name="type" type="type_value" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                        <xs:attribute name="type" type="type_value"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!--  -->
+    <xs:simpleType name="type_value">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="click"/>
+            <xs:enumeration value="view"/>
+            <xs:enumeration value="scancode_push"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- ==================== -->
+    <!--        属性定义       -->
+    <!-- ==================== -->
+    <property name="PROJECT_NAME" value="wechat-web"/>
+    <property name="LOG_HOME" value="/app/logs/${PROJECT_NAME}"/>
+    <!-- ==================== -->
+    <!--        控制台         -->
+    <!-- ==================== -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] [%level] [%class:%line] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <!-- ==================== -->
+    <!--         FILE         -->
+    <!-- ==================== -->
+    <appender name="FILE_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/web-debug.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] [%level] [%class:%line] - %m%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/web-debug.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+    </appender>
+    <!-- ==================== -->
+    <!--                  -->
+    <!-- ==================== -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE_DEBUG"/>
+    </root>
+</configuration>

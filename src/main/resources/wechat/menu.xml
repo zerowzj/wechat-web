@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns="http://www.company.cn/menu"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.company.cn/menu /META-INF/menu.xsd">
+    <button name="取快递" type="view">
+        <url>
+            <![CDATA[${wechat.auth.url}?appid=${wechat.appid}&redirect_uri=${wechat.redirect_uri.getting_list}&response_type=${wechat.auth.response_type}&scope=${wechat.auth.scope}&state=${wechat.auth.state}#wechat_redirect]]>
+        </url>
+    </button>
+    <button name="查快递" type="view">
+        <url>
+            <![CDATA[${wechat.auth.url}?appid=${wechat.appid}&redirect_uri=${wechat.redirect_uri.got_list}&response_type=${wechat.auth.response_type}&scope=${wechat.auth.scope}&state=${wechat.auth.state}#wechat_redirect]]>
+        </url>
+    </button>
+    <button name="圈联">
+        <sub_btn name="关于我们" type="view">
+            <url><![CDATA[http://www.sohu.com]]></url>
+        </sub_btn>
+        <sub_btn name="公司介绍" type="click">
+            <key><![CDATA[click_1]]></key>
+        </sub_btn>
+    </button>
+</menu>

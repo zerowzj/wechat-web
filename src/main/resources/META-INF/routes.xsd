@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.company.cn/routes"
+           elementFormDefault="qualified">
+    <xs:element name="routes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="route" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="msgType" type="msg_type" use="required"/>
+                        <xs:attribute name="event" type="event"/>
+                        <xs:attribute name="eventKey" type="xs:string"/>
+                        <xs:attribute name="bean" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="msg_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="event"/>
+            <xs:enumeration value="text"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="event">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="subscribe"/>
+            <xs:enumeration value="unsubscribe"/>
+            <xs:enumeration value="CLICK"/>
+            <xs:enumeration value="VIEW"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
