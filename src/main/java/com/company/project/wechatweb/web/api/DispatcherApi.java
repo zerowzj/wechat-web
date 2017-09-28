@@ -63,7 +63,7 @@ public class DispatcherApi implements ApplicationContextAware {
      */
     private <T> T getBean(String name) {
         if (!cxt.containsBean(name)) {
-            throw new IllegalStateException("未包含[" + name + "]的Bean");
+            throw new IllegalStateException("未包含[" + name + "]的Bean！");
         }
         return (T) cxt.getBean(name);
     }
