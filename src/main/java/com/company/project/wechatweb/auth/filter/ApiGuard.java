@@ -3,6 +3,7 @@ package com.company.project.wechatweb.auth.filter;
 import com.company.project.wechatweb.common.util.Wechats;
 import com.company.util.HttpWrites;
 import com.google.common.base.Joiner;
+import com.google.common.base.Objects;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +42,6 @@ public class ApiGuard extends OncePerRequestFilter {
      */
     private static final String ECHO_STR = "echostr";
 
-
     private static final String TOKEN;
 
     static {
@@ -53,7 +53,7 @@ public class ApiGuard extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         //有效性验证
         String method = request.getMethod();
-        if ("GET".equals(method.toUpperCase()) && isValidity(request)) {
+        if (Objects.equal("GET", method.toUpperCase()) && isValidity(request)) {
             if (isSignature(request)) {
                 HttpWrites.write(response, getEchostr(request));
             } else {
@@ -80,7 +80,7 @@ public class ApiGuard extends OncePerRequestFilter {
     private boolean isSignature(HttpServletRequest request) {
         String src = Joiner.on("").join(TOKEN, getTimestamp(request), getNonce(request));
         String mySign = DigestUtils.sha1Hex(src);
-        if (mySign.equals(getSignature(request))) {
+        if (Objects.equal(mySign, getSignature(request))) {
             return true;
         }
         return false;
