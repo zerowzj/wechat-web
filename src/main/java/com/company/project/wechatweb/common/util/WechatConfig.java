@@ -4,11 +4,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Wechats
+ * WechatConfig
  *
  * @author wangzhj
  */
-public final class Wechats {
+public final class WechatConfig {
 
     private static final String FILE = "/wechat.properties";
 
@@ -16,7 +16,7 @@ public final class Wechats {
 
     static {
         try {
-            InputStream in = Wechats.class.getResourceAsStream(FILE);
+            InputStream in = WechatConfig.class.getResourceAsStream(FILE);
             PROP = new Properties();
             PROP.load(in);
         } catch (Exception ex) {
@@ -39,6 +39,7 @@ public final class Wechats {
     public static String getMchId() {
         return PROP.getProperty("wechat.pay.mch_id");
     }
+
     public static String getKey() {
         return PROP.getProperty("wechat.pay.key");
     }

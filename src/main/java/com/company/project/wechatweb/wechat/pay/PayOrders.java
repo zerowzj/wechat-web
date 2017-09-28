@@ -1,6 +1,6 @@
 package com.company.project.wechatweb.wechat.pay;
 
-import com.company.project.wechatweb.common.util.Wechats;
+import com.company.project.wechatweb.common.util.WechatConfig;
 import com.company.project.wechatweb.common.util.XmlUtil;
 import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
@@ -37,10 +37,10 @@ public class PayOrders {
     private static final String NOTIFY_URL;
 
     static {
-        APP_ID = Wechats.getAppId();
-        MCH_ID = Wechats.getMchId();
-        KEY = Wechats.getKey();
-        NOTIFY_URL = Wechats.getPayNotifyUrl();
+        APP_ID = WechatConfig.getAppId();
+        MCH_ID = WechatConfig.getMchId();
+        KEY = WechatConfig.getKey();
+        NOTIFY_URL = WechatConfig.getPayNotifyUrl();
     }
 
     /**

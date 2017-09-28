@@ -1,6 +1,6 @@
 package com.company.project.wechatweb.wechat.token;
 
-import com.company.project.wechatweb.common.util.Wechats;
+import com.company.project.wechatweb.common.util.WechatConfig;
 import com.company.util.JsonUtil;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.common.base.Strings;
@@ -30,8 +30,8 @@ public class Tokens {
     private static long overTimeMillis = -1;
 
     static {
-        APP_ID = Wechats.getAppId();
-        SECRET = Wechats.getSecret();
+        APP_ID = WechatConfig.getAppId();
+        SECRET = WechatConfig.getSecret();
     }
 
     /**

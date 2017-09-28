@@ -53,7 +53,6 @@ public class DispatcherApi implements ApplicationContextAware {
             Msg msg = XmlUtil.fromXML(xmlBody, getMsgClazz(clazz));
             bLogic.doBusiness(msg);
         } catch (Exception ex) {
-            ex.printStackTrace();
             throw ex;
         }
         return new ResponseEntity(HttpStatus.OK);

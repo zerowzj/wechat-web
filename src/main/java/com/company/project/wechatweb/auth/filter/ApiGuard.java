@@ -1,6 +1,6 @@
 package com.company.project.wechatweb.auth.filter;
 
-import com.company.project.wechatweb.common.util.Wechats;
+import com.company.project.wechatweb.common.util.WechatConfig;
 import com.company.util.HttpWrites;
 import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
@@ -45,7 +45,7 @@ public class ApiGuard extends OncePerRequestFilter {
     private static final String TOKEN;
 
     static {
-        TOKEN = Wechats.getToken();
+        TOKEN = WechatConfig.getToken();
     }
 
     @Override
